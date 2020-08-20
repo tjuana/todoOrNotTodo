@@ -1,8 +1,8 @@
 import React from "react";
 
 class TuskInput extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       input: ""
     };
@@ -17,9 +17,7 @@ class TuskInput extends React.Component {
   };
 
   inputChange = (event) => {
-
 	this.setState({ input: event.target.value });
-
   };
 
   render() {

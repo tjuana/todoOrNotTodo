@@ -1,24 +1,40 @@
 import React from "react";
-import TaskInput from "./TaskInput";
+import App from "../App";
 
-const Task = ({ edit, task, ...props }) => {
-  const ActionBtn = () => (
+class Task extends React.Component {
+	// constructor(){
+	// 	super();
+	// 	this.state = {
+	// 		input : ""
+	// 	};
+	// }
+
+
+
+	inputChange = (event) => {
+		this.setState({ input: event.target.value });
+	};
+	
+	render (){
+	
+	var viewStyle = {};
+	var editStyle = {};
+	const {deleteTask, doneTask, task, editTask, edit, editTaskInput} = this.props;
+	const className = "task " + (task.done ? "task-done" : "");
+	const { input } = task.title;
+	const ActionBtn = () => (
     <div className="action-btn">
       {task.done ? (
-        <span aria-label="done" role="img" onClick={props.deleteTask}>
+        <span aria-label="done" role="img" onClick={deleteTask}>
           ✅
         </span>
       ) : (
-        <span aria-label="delete" role="img" onClick={props.doneTask}>
+        <span aria-label="delete" role="img" onClick={doneTask}>
           🎯
         </span>
       )}
     </div>
   );
-
-  const className = "task " + (task.done ? "task-done" : "");
-  var viewStyle = {};
-  var editStyle = {};
 
   if (edit) {
     viewStyle.display = "none";
@@ -26,23 +42,20 @@ const Task = ({ edit, task, ...props }) => {
     editStyle.display = "none";
   }
 
-  function taskChanges(text){
-	  var newTask = text
-
-	}
   return (
-    <div className={className} onDoubleClick={props.editTask}>
+    <div className={className} onDoubleClick={editTask}>
       <p style={viewStyle} >{task.title}</p>
       <input
-	  	onChange={TaskInput.inputCahnge}
+	  	onChange={editTaskInput}
         style={editStyle}
         className="task-input"
-        type="text"
-        value={TaskInput.input}
+		type="text"
+		value={task.title}
       ></input>
       <ActionBtn></ActionBtn>
     </div>
   );
-};
+}
+}
 
 export default Task;

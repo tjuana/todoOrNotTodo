@@ -65,6 +65,10 @@ class App extends React.Component {
     });
   };
 
+  editTaskInput = (id) => {
+	console.log(id);
+	};
+
   render() {
     const { tasks } = this.state;
     const activeTasks = tasks.filter((task) => !task.done);
@@ -77,6 +81,7 @@ class App extends React.Component {
             doneTask={() => this.doneTask(task.id)}
             deleteTask={() => this.deleteTask(task.id)}
 			editTask={() => this.editTask(task.id)}
+			editTaskInput={() => this.editTaskInput(task.id)}
             task={task}
             key={task.id}
             edit={task.editing}
@@ -84,6 +89,7 @@ class App extends React.Component {
         ))}
         <TaskInput addTask={this.addTask}></TaskInput>
       </div>
+
     );
   }
 }
