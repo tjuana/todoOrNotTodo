@@ -26,10 +26,15 @@ const Task = ({ edit, task, ...props }) => {
     editStyle.display = "none";
   }
 
+  function taskChanges(text){
+	  var newTask = text
+
+	}
   return (
     <div className={className} onDoubleClick={props.editTask}>
       <p style={viewStyle} >{task.title}</p>
       <input
+	  	onChange={TaskInput.inputCahnge}
         style={editStyle}
         className="task-input"
         type="text"
