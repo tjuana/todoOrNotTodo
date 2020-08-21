@@ -4,34 +4,38 @@ import "./styles.css";
 import Task from "./components/Task";
 import TaskInput from "./components/TaskInput";
 
+
 class App extends React.Component {
   constructor() {
-    super();
+	super();
 
+	///real part
+	
+
+	console.log(localStorage.getItem('todo'));
     this.state = {
       tasks: [
-        { id: 0, title: "Create todo app", done: false, editing: false },
-        { id: 1, title: "Make some noise", done: true, editing: false },
-        { id: 2, title: "learn js", done: false, editing: false },
-        {
-          id: 3,
-          title: "read react documentation",
-          done: false,
-		  editing: false,
-        }
-      ]
-    };
+	  ]
+	};
+	this.state.tasks = JSON.parse(localStorage.getItem('todo'));
   }
+ 
+  toLocal = (tasks) => {
+	localStorage.setItem('todo', JSON.stringify(this.state.tasks));
+	};
 
-  editTask = (id) => {
+  editTaskView = (id) => {
 	const index = this.state.tasks.map((task) => task.id).indexOf(id);
 	const { tasks } = this.state;
 	const newTasks = tasks;
 	if (newTasks[index].editing === false) {
 		newTasks[index].editing = true;
+		
 		} else {
 			newTasks[index].editing = false;
 		}
+	
+	
     this.setState(tasks => newTasks);
   };
 
@@ -44,7 +48,8 @@ class App extends React.Component {
       done: false,
       editing: false
     });
-    this.setState((tasks) => newTasks);
+	this.setState((tasks) => newTasks);
+	this.toLocal(newTasks);
   };
 
   doneTask = (id) => {
@@ -57,7 +62,7 @@ class App extends React.Component {
   };
 
   deleteTask = (id) => {
-    const index = this.state.tasks.map((task) => task.id).indexOf(id);
+	const index = this.state.tasks.map((task) => task.id).indexOf(id);
     this.setState((state) => {
       let { tasks } = state;
       delete tasks[index];
@@ -65,8 +70,13 @@ class App extends React.Component {
     });
   };
 
-  editTaskInput = (id) => {
-	console.log(id);
+  editTaskInput = (id, input) => {
+	const {tasks} = this.state;
+	const newTasks = tasks;
+	const index = this.state.tasks.map((task) => task.id).indexOf(id);
+
+	newTasks[index].title = input;
+	this.setState((tasks) => newTasks);
 	};
 
   render() {
@@ -75,19 +85,20 @@ class App extends React.Component {
     const doneTasks = tasks.filter((task) => task.done);
     return (
       <div className="App">
-        <h1 className="top">ToDo : {activeTasks.length}</h1>
+        <h1 className="top">{activeTasks.length} tasks ToDo {new Date().toLocaleDateString()}</h1>
         {[...activeTasks, ...doneTasks].map((task) => (
           <Task
             doneTask={() => this.doneTask(task.id)}
             deleteTask={() => this.deleteTask(task.id)}
-			editTask={() => this.editTask(task.id)}
-			editTaskInput={() => this.editTaskInput(task.id)}
+			editTaskView={() => this.editTaskView(task.id)}
+			editTaskInput={this.editTaskInput}
             task={task}
             key={task.id}
             edit={task.editing}
           ></Task>
         ))}
         <TaskInput addTask={this.addTask}></TaskInput>
+		<img src={logo}></img>
       </div>
 
     );
