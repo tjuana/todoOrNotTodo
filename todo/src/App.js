@@ -34,7 +34,7 @@ class App extends React.Component {
 			newTasks[index].editing = false;
 		}
 	this.setState(tasks => newTasks);
-	this.toLocal(newTasks);
+	this.toLocal();
   };
 
   addTask = (task) => {
@@ -47,7 +47,7 @@ class App extends React.Component {
       editing: false
     });
 	this.setState((tasks) => newTasks);
-	this.toLocal(newTasks);
+	this.toLocal();
   };
 
   doneTask = (id) => {
@@ -56,7 +56,7 @@ class App extends React.Component {
 	const newTasks = tasks;
 	newTasks[index].done = true;
     this.setState((tasks) => newTasks);
-	this.toLocal(this.state.tasks);
+	this.toLocal();
   };
 
   deleteTask = (id) => {
@@ -65,7 +65,7 @@ class App extends React.Component {
 	const newTasks = tasks;
 	newTasks.splice(index, 1);
 	this.setState((tasks) => newTasks);
-	this.toLocal(this.state.tasks);
+	this.toLocal();
   };
 
   editTaskInput = (id, input) => {
@@ -74,7 +74,7 @@ class App extends React.Component {
 	const index = this.state.tasks.map((task) => task.id).indexOf(id);
 	newTasks[index].title = input;
 	this.setState((tasks) => newTasks);
-	this.toLocal(this.state.tasks);
+	this.toLocal();
 	};
 
   render() {
