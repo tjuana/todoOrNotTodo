@@ -9,17 +9,16 @@ class App extends React.Component {
   constructor() {
 	super();
 
-	///real part
-	
-
-	console.log(localStorage.getItem('todo'));
     this.state = {
-      tasks: [
-	  ]
+      tasks: []
 	};
-	this.state.tasks = JSON.parse(localStorage.getItem('todo'));
+	this.fromLocal();
   }
  
+  fromLocal = () => {
+	this.state.tasks = JSON.parse(localStorage.getItem('todo'));
+  }
+
   toLocal = (tasks) => {
 	localStorage.setItem('todo', JSON.stringify(this.state.tasks));
 	};
@@ -34,9 +33,8 @@ class App extends React.Component {
 		} else {
 			newTasks[index].editing = false;
 		}
-	
-	
-    this.setState(tasks => newTasks);
+	this.setState(tasks => newTasks);
+	this.toLocal(newTasks);
   };
 
   addTask = (task) => {
@@ -53,30 +51,30 @@ class App extends React.Component {
   };
 
   doneTask = (id) => {
-    const index = this.state.tasks.map((task) => task.id).indexOf(id);
-    this.setState((state) => {
-      let { tasks } = this.state;
-      tasks[index].done = true;
-      return tasks;
-    });
+	const index = this.state.tasks.map((task) => task.id).indexOf(id);
+	const { tasks } = this.state;
+	const newTasks = tasks;
+	newTasks[index].done = true;
+    this.setState((tasks) => newTasks);
+	this.toLocal(this.state.tasks);
   };
 
   deleteTask = (id) => {
 	const index = this.state.tasks.map((task) => task.id).indexOf(id);
-    this.setState((state) => {
-      let { tasks } = state;
-      delete tasks[index];
-      return tasks;
-    });
+	const { tasks } = this.state;
+	const newTasks = tasks;
+	newTasks.splice(index, 1);
+	this.setState((tasks) => newTasks);
+	this.toLocal(this.state.tasks);
   };
 
   editTaskInput = (id, input) => {
 	const {tasks} = this.state;
 	const newTasks = tasks;
 	const index = this.state.tasks.map((task) => task.id).indexOf(id);
-
 	newTasks[index].title = input;
 	this.setState((tasks) => newTasks);
+	this.toLocal(this.state.tasks);
 	};
 
   render() {
@@ -98,7 +96,7 @@ class App extends React.Component {
           ></Task>
         ))}
         <TaskInput addTask={this.addTask}></TaskInput>
-		<img src={logo}></img>
+		<img src={logo} alt="reactlogo"></img>
       </div>
 
     );
