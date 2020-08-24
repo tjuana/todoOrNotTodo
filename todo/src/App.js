@@ -3,7 +3,9 @@ import logo from './logo.svg';
 import "./styles.css";
 import Task from "./components/Task";
 import TaskInput from "./components/TaskInput";
-
+import {todoReducer} from './redux/todoReducers';
+import {changeFilterAction, addTaskAction, putTasksToArray, addTask} from './redux/todoActions';
+import {createStore, combineReducers} from 'redux';
 
 class App extends React.Component {
   constructor() {
@@ -12,10 +14,20 @@ class App extends React.Component {
     this.state = {
       tasks: []
 	};
-	this.state.tasks = JSON.parse(localStorage.getItem('todo'));
+
+	this.store = createStore(todoReducer);
+	this.store.dispatch(putTasksToArray(JSON.parse(localStorage.getItem('todo'))));
+	this.state = this.store.getState();
+
+	this.store.subscribe( () => {
+		this.setState(this.store.getState());
+	})
+	console.log(this.store.getState());
+
+	
   }
  
-  saveToLocal = (tasks) => {
+  saveToLocal = () => {
 	localStorage.setItem('todo', JSON.stringify(this.state.tasks));
 	};
 
@@ -33,18 +45,22 @@ class App extends React.Component {
 	this.saveToLocal();
   };
 
-  addTask = (task) => {
-    const { tasks } = this.state;
-    const newTasks = tasks;
-    newTasks.push({
-      id: newTasks.length !== 0 ? newTasks.length : 0,
-      title: task,
-      done: false,
-      editing: false
-    });
-	this.setState((tasks) => newTasks);
-	this.saveToLocal();
-  };
+//   addTask = (task) => {
+//     const { tasks } = this.state;
+// 	const newTasks = tasks;
+// 	// var test = this.store.dispatch(addTaskAction(newTasks, task));
+// 	// console.log(test);
+//     // newTasks.push({
+//     //   id: newTasks.length !== 0 ? newTasks.length : 0,
+//     //   title: task,
+//     //   done: false,
+//     //   editing: false
+//     // });
+// 	// this.setState((tasks) => newTasks);
+// 	this.store.dispatch(addTaskAction(task));
+// 	// this.setState((tasks) => newTasks);
+// 	//this.saveToLocal();
+//   };
 
   doneTask = (id) => {
 	const index = this.state.tasks.map((task) => task.id).indexOf(id);
@@ -79,7 +95,7 @@ class App extends React.Component {
     const doneTasks = tasks.filter((task) => task.done);
     return (
       <div className="App">
-        <h1 className="top">{activeTasks.length} tasks ToDo {new Date().saveToLocaleDateString()}</h1>
+        <h1 className="top">{activeTasks.length} tasks ToDo {new Date().toLocaleDateString()}</h1>
         {[...activeTasks, ...doneTasks].map((task) => (
           <Task
             doneTask={() => this.doneTask(task.id)}
@@ -91,7 +107,7 @@ class App extends React.Component {
             edit={task.editing}
           ></Task>
         ))}
-        <TaskInput addTask={this.addTask}></TaskInput>
+        <TaskInput store={this.store}></TaskInput>
 		<img src={logo} alt="reactlogo"></img>
       </div>
 

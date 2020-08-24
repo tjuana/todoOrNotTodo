@@ -1,4 +1,5 @@
 import React from "react";
+import { addTaskAction } from "../redux/todoActions";
 
 class TuskInput extends React.Component {
   constructor() {
@@ -11,8 +12,8 @@ class TuskInput extends React.Component {
   addTask = () => {
     const { input } = this.state;
     if (input) {
-      this.props.addTask(input);
-      this.setState({ input: "" });
+      this.props.store.dispatch(addTaskAction(input));
+	  this.setState({ input: "" });	  
     }
   };
 
