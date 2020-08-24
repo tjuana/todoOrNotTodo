@@ -12,14 +12,10 @@ class App extends React.Component {
     this.state = {
       tasks: []
 	};
-	this.fromLocal();
-  }
- 
-  fromLocal = () => {
 	this.state.tasks = JSON.parse(localStorage.getItem('todo'));
   }
-
-  toLocal = (tasks) => {
+ 
+  saveToLocal = (tasks) => {
 	localStorage.setItem('todo', JSON.stringify(this.state.tasks));
 	};
 
@@ -34,7 +30,7 @@ class App extends React.Component {
 			newTasks[index].editing = false;
 		}
 	this.setState(tasks => newTasks);
-	this.toLocal();
+	this.saveToLocal();
   };
 
   addTask = (task) => {
@@ -47,7 +43,7 @@ class App extends React.Component {
       editing: false
     });
 	this.setState((tasks) => newTasks);
-	this.toLocal();
+	this.saveToLocal();
   };
 
   doneTask = (id) => {
@@ -56,7 +52,7 @@ class App extends React.Component {
 	const newTasks = tasks;
 	newTasks[index].done = true;
     this.setState((tasks) => newTasks);
-	this.toLocal();
+	this.saveToLocal();
   };
 
   deleteTask = (id) => {
@@ -65,7 +61,7 @@ class App extends React.Component {
 	const newTasks = tasks;
 	newTasks.splice(index, 1);
 	this.setState((tasks) => newTasks);
-	this.toLocal();
+	this.saveToLocal();
   };
 
   editTaskInput = (id, input) => {
@@ -74,7 +70,7 @@ class App extends React.Component {
 	const index = this.state.tasks.map((task) => task.id).indexOf(id);
 	newTasks[index].title = input;
 	this.setState((tasks) => newTasks);
-	this.toLocal();
+	this.saveToLocal();
 	};
 
   render() {
@@ -83,7 +79,7 @@ class App extends React.Component {
     const doneTasks = tasks.filter((task) => task.done);
     return (
       <div className="App">
-        <h1 className="top">{activeTasks.length} tasks ToDo {new Date().toLocaleDateString()}</h1>
+        <h1 className="top">{activeTasks.length} tasks ToDo {new Date().saveToLocaleDateString()}</h1>
         {[...activeTasks, ...doneTasks].map((task) => (
           <Task
             doneTask={() => this.doneTask(task.id)}
