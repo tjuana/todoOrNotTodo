@@ -5,11 +5,11 @@ import React from "react";
 	const ActionBtn = () => (
 	<div className="action-btn">
 		{task.done ? (
-		<span aria-label="done" role="img" onClick={deleteTask}>
+		<span aria-label="delete" role="img" onClick={deleteTask}>
 			✅
 		</span>
 		) : (
-		<span aria-label="delete" role="img" onClick={doneTask}>
+		<span aria-label="done" role="img" onClick={doneTask}>
 			🎯
 		</span>
 		)}
@@ -17,6 +17,7 @@ import React from "react";
 	);
 
 	const className = "task " + (task.done ? "task-done" : "");
+	// console.log("yo hi from task",task.done);
 	var input = task.title;
 	var viewStyle = {};
 	var editStyle = {};
@@ -46,4 +47,11 @@ import React from "react";
   );
 }
 
+// const mapDispatchToProps = dispatch => {
+// 	return {
+// 		deleteTask : () => dispatch({ type : 'DELETE_TASK' }),
+// 		doneTask : () => dispatch( {type : 'DONE_TASK' }),
+// 		addTask : () => dispatch( {type : 'ADD_TAB' })
+// 	}
+// }
 export default Task;

@@ -1,29 +1,48 @@
+import { store } from '../store/configureStore';
+
+export const type = {
+	CHANGE_FILTER : "CHANGE_FILTER",
+	ADD_TAB : "ADD_TAB",
+	DONE_TASK : "DONE_TASK",
+	DELETE_TASK : "DELETE_TASK"
+}
+
 export const changeFilterAction = {
-	type: "CHANGE_FILTER"
-};
+	type: type.CHANGE_FILTER
+}
+
 
 export const addTaskAction = (input) => {
-	
-	const newTasks = JSON.parse(localStorage.getItem('todo'));
 
-    newTasks.push({
-      id: newTasks.length !== 0 ? newTasks.length : 0,
+	const tasks = store.getState().tasks;
+    tasks.push({
+      id: store.getState().tasks.length,
       title: input,
       done: false,
       editing: false
 	});
 
-	localStorage.setItem('todo', JSON.stringify(newTasks));
-	// console.log(localStorage);
 	return {
-		type : "ADD_TAB",
-		tasks : newTasks
+		type : type.ADD_TAB,
+		tasks : tasks
 	}
-  };
+  }
 
-export const putTasksToArray = (tasks) => {
+export const deleteTask = (index) => {
+	const tasks = store.getState().tasks;
+	tasks.splice(index, 1);
 	return {
-		type: "PUT_TASKS",
+		type : type.DELETE_TASK,
+		tasks : tasks
+	}
+}
+
+export const doneTask = (index) => {
+	const tasks = store.getState().tasks;
+	store.getState().tasks[index].done = true;
+
+	return {
+		type: type.DONE_TASK,
 		tasks: tasks
 	}
 }

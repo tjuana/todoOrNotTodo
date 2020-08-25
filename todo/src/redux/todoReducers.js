@@ -1,3 +1,5 @@
+
+
 export function todoReducer(oldState, action){
 	switch  (action.type) {
 		case "CHANGE_FILTER" :
@@ -9,10 +11,15 @@ export function todoReducer(oldState, action){
 				...oldState, 
 				tasks : [...action.tasks]
 				};
-		case "PUT_TASKS" :
+		case "DONE_TASK" :
 			return {
 				...oldState, 
-				tasks : [...oldState.tasks, ...action.tasks]	
+				tasks : [...action.tasks]
+				};
+		case "DELETE_TASK" :
+			return {
+				...oldState, 
+				tasks : [...action.tasks]	
 				};
 		default :
 			if (!!oldState) 

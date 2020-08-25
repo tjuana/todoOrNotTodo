@@ -1,6 +1,6 @@
 {
-    "glassit.alpha": 240,
-    "glassit.step": 3,
+    "glassit.alpha": 100,
+    "glassit.step": 7,
     "editor.insertSpaces": false,
 	"editor.detectIndentation": false,
 	"editor.tabSize": 4
