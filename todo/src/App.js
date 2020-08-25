@@ -41,7 +41,6 @@ class App extends React.Component {
 
   render() {
 	const { tasks } = this.props.tasksFromRedux;
-	console.log(this.props.tasksFromRedux, "zaebok");
     const activeTasks = tasks.filter((task) => !task.done);
     const doneTasks = tasks.filter((task) => task.done);
     return (
