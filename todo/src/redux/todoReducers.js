@@ -2,9 +2,15 @@
 
 export function todoReducer(oldState, action){
 	switch  (action.type) {
-		case "CHANGE_FILTER" :
+		case "EDIT_TASK_VIEW" :
 			return {
-				...oldState, filter : "complited"
+				...oldState, 
+				tasks : [...action.tasks]
+			};
+		case "EDIT_TASK_INPUT" :
+			return {
+				...oldState, 
+				tasks : [...action.tasks]
 			};
 		case "ADD_TAB" :
 			return {
@@ -22,9 +28,6 @@ export function todoReducer(oldState, action){
 				tasks : [...action.tasks]	
 				};
 		default :
-			if (!!oldState) 
 				return oldState
-			else
-				return ({tasks : [],filter: "all"});
 	}	
 }

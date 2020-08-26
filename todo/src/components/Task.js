@@ -17,7 +17,7 @@ import React from "react";
 	);
 
 	const className = "task " + (task.done ? "task-done" : "");
-	// console.log("yo hi from task",task.done);
+	console.log("loook", className);
 	var input = task.title;
 	var viewStyle = {};
 	var editStyle = {};
@@ -28,15 +28,16 @@ import React from "react";
     editStyle.display = "none";
   }
 
-  var func = (event) => {
+  const editInputChange = (event) => {
 	input = event.target.value;
-	 editTaskInput(task.id, input)};
+	editTaskInput(task.id, input)
+};
 
   return (
     <div className={className} onDoubleClick={editTaskView}>
       <p style={viewStyle} >{task.title}</p>
       <input
-		onChange={func}
+		onChange={editInputChange}
         style={editStyle}
         className="task-input"
 		type="text"
@@ -47,11 +48,4 @@ import React from "react";
   );
 }
 
-// const mapDispatchToProps = dispatch => {
-// 	return {
-// 		deleteTask : () => dispatch({ type : 'DELETE_TASK' }),
-// 		doneTask : () => dispatch( {type : 'DONE_TASK' }),
-// 		addTask : () => dispatch( {type : 'ADD_TAB' })
-// 	}
-// }
 export default Task;
