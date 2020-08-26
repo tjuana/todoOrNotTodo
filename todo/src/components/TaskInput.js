@@ -17,6 +17,7 @@ class TuskInput extends React.Component {
   };
 
   inputChange = (event) => {
+	event.preventDefault();
 	this.setState({ input: event.target.value });
   };
 

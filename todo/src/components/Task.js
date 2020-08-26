@@ -16,8 +16,13 @@ import React from "react";
 	</div>
 	);
 
-	const className = "task " + (task.done ? "task-done" : "");
-	console.log("loook", className);
+	var classNames = require('classnames');
+ 
+	const taskDone = classNames({
+		task  : true,
+		"task-done" : task.done ,
+		"" : !task.done
+	});
 	var input = task.title;
 	var viewStyle = {};
 	var editStyle = {};
@@ -34,7 +39,7 @@ import React from "react";
 };
 
   return (
-    <div className={className} onDoubleClick={editTaskView}>
+    <div className={taskDone} onDoubleClick={editTaskView}>
       <p style={viewStyle} >{task.title}</p>
       <input
 		onChange={editInputChange}
