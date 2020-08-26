@@ -1,5 +1,6 @@
-import React from "react";
-	
+import React from 'react';
+import classNames from 'classnames';
+
 	const Task = ({deleteTask, doneTask, task, 
 		editTaskView, edit, editTaskInput}) => {
 	const ActionBtn = () => (
@@ -16,7 +17,7 @@ import React from "react";
 	</div>
 	);
 
-	var classNames = require('classnames');
+
  
 	const taskDone = classNames({
 		task  : true,
@@ -34,20 +35,20 @@ import React from "react";
   }
 
   const editInputChange = (event) => {
-	input = event.target.value;
-	editTaskInput(task.id, input)
+    input = event.target.value;
+    editTaskInput(task.id, input)
 };
 
   return (
     <div className={taskDone} onDoubleClick={editTaskView}>
       <p style={viewStyle} >{task.title}</p>
       <input
-		onChange={editInputChange}
+        onChange={editInputChange}
         style={editStyle}
         className="task-input"
-		type="text"
-		value={input}
-      ></input>
+        type="text"
+        value={input}
+      />
       <ActionBtn></ActionBtn>
     </div>
   );

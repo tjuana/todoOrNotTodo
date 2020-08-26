@@ -28,8 +28,7 @@ class TuskInput extends React.Component {
         <input onChange={this.inputChange} value={input}></input>
         <button onClick={this.addTask}>ADD...</button>
       </div>
-	);
-	
+  );
   }
 }
 

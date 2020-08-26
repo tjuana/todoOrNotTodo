@@ -1,7 +1,8 @@
 {
     "glassit.alpha": 100,
     "glassit.step": 7,
-    "editor.insertSpaces": false,
-	"editor.detectIndentation": false,
-	"editor.tabSize": 4
+    "editor.insertSpaces": true,
+    "editor.detectIndentation": false,
+    "editor.renderWhitespace": "all",
+	"editor.tabSize": 2
 }
