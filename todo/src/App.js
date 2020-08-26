@@ -26,8 +26,7 @@ class App extends React.Component {
         <h1 className="top">{activeTasks.length} tasks ToDo {new Date().toLocaleDateString()}</h1>
         {[...activeTasks, ...doneTasks].map((task) => (
           <Task
-			// doneTask={() => props.doneTask(tasks.indexOf(task))}
-			doneTask={() => props.toggleTodo(task.id)}
+			doneTask={() => props.doneTask(tasks.indexOf(task))}
 			deleteTask={() => props.deleteTask(tasks.indexOf(task))}
 			editTaskView={() => props.editTaskView(tasks.indexOf(task))}
 			editTaskInput={props.editTaskInput}
