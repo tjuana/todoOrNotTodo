@@ -66,7 +66,6 @@ export const deleteTask = (index) => {
 }
 
 export const doneTask = (index) => {
-
   const tasks = store.getState().tasks;
   store.getState().tasks[index].done = true;
 

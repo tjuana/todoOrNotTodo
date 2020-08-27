@@ -13,8 +13,8 @@ module.exports = {
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
-	},
-	
+    },
+
     ecmaVersion: 2018,
     sourceType: 'module',
   },
@@ -22,7 +22,6 @@ module.exports = {
     'react',
   ],
   rules: {
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
   },
-  
+
 };
