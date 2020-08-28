@@ -1,0 +1,23 @@
+:root {
+  --text: #0d568a;
+}
+
+.App {
+  margin: 30px 0 0 30px;
+  width: 1vx;
+  border-radius: 10px;
+  box-shadow: 0 7px 15px #0000001a;
+  overflow: hidden;
+}
+
+.top {
+  background: var(--text);
+  color: #ffffff;
+  padding: 10px;
+  font-size: 28px;
+  margin: 0;
+  font-weight: 950;
+  border-radius: 25px;
+  margin-bottom: 10px;
+  text-align: center;
+}
