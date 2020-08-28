@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import classNames from 'classnames';
+// import classNames from 'classnames';
 import PropTypes from 'prop-types';
+import styles from './Task.module.css';
 import {
   doneTask, deleteTask, editTaskView, editTaskInput,
 } from '../redux/todoActions.jsx';
@@ -18,7 +19,7 @@ const Task = ({
   };
 
   const ActionBtn = () => (
-    <button className="action-btn" onClick={handleClick} type="submit">
+    <button className={styles.actionbtn} onClick={handleClick} type="submit">
       {!done ? (
         <span aria-label="delete" role="img">
           ✅
@@ -31,10 +32,6 @@ const Task = ({
     </button>
   );
 
-  const taskDone = classNames({
-    task: true,
-    'task-done': done,
-  });
   let inputValue = title;
   const viewStyle = {};
   const editStyle = {};
@@ -54,12 +51,12 @@ const Task = ({
     editView(id);
   };
   return (
-    <div className={taskDone} onDoubleClick={handleEditView} data-id="id">
+    <div className={!done ? styles.task : styles.taskdone} onDoubleClick={handleEditView} data-id="id">
       <p style={viewStyle}>{title}</p>
       <input
         onChange={editInputChange}
         style={editStyle}
-        className="task-input"
+        className={styles.input}
         type="text"
         value={inputValue}
       />

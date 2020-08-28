@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import styles from './TaskInput.module.css';
 import { addTask } from '../redux/todoActions.jsx';
 
 class TuskInput extends React.Component {
@@ -26,9 +27,10 @@ class TuskInput extends React.Component {
   };
 
   render() {
+    console.log('sss.', styles);
     const { input } = this.state;
     return (
-      <div className="task-input">
+      <div className={styles.input}>
         <input onChange={this.inputChange} value={input} />
         <button onClick={this.addTaskInput} type="submit">ADD...</button>
       </div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import '../styles.css';
+import styles from './Todo.module.css';
 import Task from '../components/Task.jsx';
 import TaskInput from '../components/TaskInput.jsx';
 
@@ -10,8 +10,8 @@ const Todo = ({ tasks }) => {
   const doneTasks = tasks.filter((task) => task.done);
 
   return (
-    <div className="App">
-      <h1 className="top">
+    <div className={styles.App}>
+      <h1 className={styles.top}>
         {activeTasks.length}
         {' '}
         TaSkS ToDo

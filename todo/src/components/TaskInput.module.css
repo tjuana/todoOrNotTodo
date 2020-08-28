@@ -1,0 +1,31 @@
+.input {
+  border-radius: 17px;
+  margin-top: 1px;
+  background-color: #0d568a;
+  display: flex;
+  padding: 5px;
+}
+
+.input * {
+  border-radius: 15px;
+}
+ 
+.input input {
+  width: 100%;
+  border: none;
+  padding: 5px;
+  font-size: 18px;
+  font-weight: 500;
+  color: #0d568a;
+}
+
+.input button {
+  background-color: transparent;
+  border: none;
+  font-size: 20px;
+  font-weight: 750;
+  text-transform: uppercase;
+  color: #ffffff;
+  cursor: pointer;
+  margin-left: 2px;
+} 
