@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-// import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import styles from './Task.module.css';
 import {
@@ -51,7 +50,7 @@ const Task = ({
     editView(id);
   };
   return (
-    <div className={!done ? styles.task : styles.taskdone} onDoubleClick={handleEditView} data-id="id">
+    <div className={!done ? styles.task : styles.taskdone} onDoubleClick={handleEditView}>
       <p style={viewStyle}>{title}</p>
       <input
         onChange={editInputChange}

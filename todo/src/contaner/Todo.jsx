@@ -10,7 +10,7 @@ const Todo = ({ tasks }) => {
   const doneTasks = tasks.filter((task) => task.done);
 
   return (
-    <div className={styles.App}>
+    <div className={styles.app}>
       <h1 className={styles.top}>
         {activeTasks.length}
         {' '}
@@ -50,4 +50,5 @@ Todo.propTypes = {
 Todo.defaultProps = {
   tasks: [],
 };
+
 export default connect(mapStateToProps)(Todo);

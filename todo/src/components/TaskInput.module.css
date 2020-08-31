@@ -1,16 +1,13 @@
-.input {
+.taskInput {
   border-radius: 17px;
   margin-top: 1px;
   background-color: #0d568a;
   display: flex;
   padding: 5px;
 }
-
-.input * {
-  border-radius: 15px;
-}
  
-.input input {
+.taskInput input {
+  border-radius: 15px;
   width: 100%;
   border: none;
   padding: 5px;
@@ -19,7 +16,8 @@
   color: #0d568a;
 }
 
-.input button {
+.taskInput button {
+  border-radius: 15px;
   background-color: transparent;
   border: none;
   font-size: 20px;

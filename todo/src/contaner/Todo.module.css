@@ -12,11 +12,9 @@ body {
   user-select: none;
 }
 
-.App {
-  margin: 30px 0 0 30px;
-  width: 1vx;
-  border-radius: 10px;
-  box-shadow: 0 7px 15px #0000001a;
+.app {
+  margin: 10px 10px 10px 10px;
+  box-shadow: 0 7px 15px #00000011;
   overflow: hidden;
 }
 
@@ -26,7 +24,7 @@ body {
   padding: 10px;
   font-size: 28px;
   margin: 0;
-  font-weight: 950;
+  font-weight: 700;
   border-radius: 25px;
   margin-bottom: 10px;
   text-align: center;

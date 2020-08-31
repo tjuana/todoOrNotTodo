@@ -27,10 +27,9 @@ class TuskInput extends React.Component {
   };
 
   render() {
-    console.log('sss.', styles);
     const { input } = this.state;
     return (
-      <div className={styles.input}>
+      <div className={styles.taskInput}>
         <input onChange={this.inputChange} value={input} />
         <button onClick={this.addTaskInput} type="submit">ADD...</button>
       </div>
