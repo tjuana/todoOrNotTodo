@@ -27,14 +27,14 @@ const Todo = ({ tasks }) => (
 );
 
 const mapStateToProps = (state) => ({
-  tasks: state.tasks.sort((a) => (a.done ? 1 : -1)),
+  tasks: state.tasks.sort((a) => (a.isDone ? 1 : -1)),
 });
 
 Todo.propTypes = {
   tasks: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
-      done: PropTypes.bool.isRequired,
+      isDone: PropTypes.bool.isRequired,
       editing: PropTypes.bool.isRequired,
       title: PropTypes.string.isRequired,
     }),

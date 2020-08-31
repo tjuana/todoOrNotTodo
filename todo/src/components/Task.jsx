@@ -7,10 +7,10 @@ import {
 } from '../redux/todoActions.jsx';
 
 const Task = ({
-  editing, id, done, title, del, doneTaskView, editView, editInput,
+  editing, id, isDone, title, del, doneTaskView, editView, editInput,
 }) => {
   const handleClick = () => {
-    if (done) {
+    if (isDone) {
       del(id);
     } else {
       doneTaskView(id);
@@ -19,7 +19,7 @@ const Task = ({
 
   const ActionBtn = () => (
     <button className={styles.actionbtn} onClick={handleClick} type="submit">
-      {!done ? (
+      {!isDone ? (
         <span aria-label="delete" role="img">
           ✅
         </span>
@@ -41,7 +41,7 @@ const Task = ({
     editStyle.display = 'none';
   }
 
-  const editInputChange = (event) => {
+  const handleChange = (event) => {
     inputValue = event.target.value;
     editInput(id, inputValue);
   };
@@ -49,11 +49,12 @@ const Task = ({
   const handleEditView = () => {
     editView(id);
   };
+
   return (
-    <div className={!done ? styles.task : styles.taskdone} onDoubleClick={handleEditView}>
+    <div className={!isDone ? styles.task : styles.taskdone} onDoubleClick={handleEditView}>
       <p style={viewStyle}>{title}</p>
       <input
-        onChange={editInputChange}
+        onChange={handleChange}
         style={editStyle}
         className={styles.input}
         type="text"
@@ -71,14 +72,15 @@ Task.propTypes = {
   editView: PropTypes.func.isRequired,
   editInput: PropTypes.func.isRequired,
   id: PropTypes.number.isRequired,
-  done: PropTypes.bool.isRequired,
+  isDone: PropTypes.bool.isRequired,
   title: PropTypes.string.isRequired,
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  del: (id) => dispatch(deleteTask(id)),
-  doneTaskView: (id) => dispatch(doneTask(id)),
-  editView: (index) => dispatch(editTaskView(index)),
-  editInput: (index, input) => dispatch(editTaskInput(index, input)),
-});
+const mapDispatchToProps = {
+  del: deleteTask,
+  doneTaskView: doneTask,
+  editView: editTaskView,
+  editInput: editTaskInput,
+};
+
 export default connect(null, mapDispatchToProps)(Task);

@@ -7,7 +7,6 @@ import { addTask } from '../redux/todoActions.jsx';
 class TuskInput extends React.Component {
   constructor() {
     super();
-    localStorage.clear();
     this.state = {
       input: '',
     };
@@ -42,7 +41,8 @@ TuskInput.propTypes = {
   add: PropTypes.func.isRequired,
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  add: (index) => dispatch(addTask(index)),
-});
+const mapDispatchToProps = {
+  add: addTask,
+};
+
 export default connect(null, mapDispatchToProps)(TuskInput);

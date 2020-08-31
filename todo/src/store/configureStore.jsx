@@ -1,5 +1,8 @@
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, combineReducers} from 'redux';
+// import thunk from 'redux-thunk';
 import todoReducer from '../redux/todoReducers';
+
+// const rootReducer = combineReducers({ todoReducer });
 
 export const initialState = {
   tasks: JSON.parse(localStorage.getItem('todo')) || [],

@@ -1,5 +1,5 @@
 import {
-  ADD_TAB, EDIT_TASK_INPUT, EDIT_TASK_VIEW, DELETE_TASK, DONE_TASK, INIT,
+  ADD_TAB, EDIT_TASK_INPUT, EDIT_TASK_VIEW, DELETE_TASK, DONE_TASK,
 } from '../const';
 
 const todoReducer = (oldState, action) => {
@@ -25,11 +25,6 @@ const todoReducer = (oldState, action) => {
         tasks: [...action.tasks],
       };
     case DELETE_TASK:
-      return {
-        ...oldState,
-        tasks: [...action.tasks],
-      };
-    case INIT:
       return {
         ...oldState,
         tasks: [...action.tasks],

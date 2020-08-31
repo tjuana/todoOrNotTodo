@@ -1,15 +1,7 @@
 import { store } from '../store/configureStore.jsx';
 import {
-  ADD_TAB, DELETE_TASK, EDIT_TASK_INPUT, EDIT_TASK_VIEW, DONE_TASK, INIT,
+  ADD_TAB, DELETE_TASK, EDIT_TASK_INPUT, EDIT_TASK_VIEW, DONE_TASK,
 } from '../const';
-
-export const initStore = () => {
-  const { tasks } = store.getState();
-  return {
-    type: INIT,
-    tasks,
-  };
-};
 
 export const editTaskView = (id) => {
   const { tasks } = store.getState();
@@ -41,7 +33,7 @@ export const addTask = (input) => {
   tasks.push({
     id,
     title: input,
-    done: false,
+    isDone: false,
     editing: false,
   });
   return {
@@ -64,7 +56,7 @@ export const deleteTask = (id) => {
 export const doneTask = (id) => {
   const { tasks } = store.getState();
   const index = tasks.findIndex((task) => task.id === id);
-  tasks[index].done = !tasks[index].done;
+  tasks[index].isDone = !tasks[index].isDone;
 
   return {
     type: DONE_TASK,
