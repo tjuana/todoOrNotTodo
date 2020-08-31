@@ -66,7 +66,6 @@ export const doneTask = (id) => {
   const { tasks } = store.getState();
   const index = tasks.findIndex((task) => task.id === id);
   tasks[index].done = !tasks[index].done;
-  tasks.sort((a) => (a.done ? 1 : -1));
 
   return {
     type: DONE_TASK,

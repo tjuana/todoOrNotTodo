@@ -27,7 +27,7 @@ const Todo = ({ tasks }) => (
 );
 
 const mapStateToProps = (state) => ({
-  tasks: state.tasks,
+  tasks: state.tasks.sort((a) => (a.done ? 1 : -1)),
 });
 
 Todo.propTypes = {
