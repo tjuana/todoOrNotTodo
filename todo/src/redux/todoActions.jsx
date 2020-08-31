@@ -44,7 +44,6 @@ export const addTask = (input) => {
     done: false,
     editing: false,
   });
-  console.log(tasks);
   return {
     type: ADD_TAB,
     tasks,
