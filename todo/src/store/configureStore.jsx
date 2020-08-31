@@ -1,5 +1,4 @@
 import { createStore, applyMiddleware } from 'redux';
-// import thunk from 'redux-thunk';
 import todoReducer from '../redux/todoReducers';
 
 export const initialState = {
