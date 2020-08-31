@@ -7,6 +7,7 @@ import { addTask } from '../redux/todoActions.jsx';
 class TuskInput extends React.Component {
   constructor() {
     super();
+    localStorage.clear();
     this.state = {
       input: '',
     };

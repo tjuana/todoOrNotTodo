@@ -5,32 +5,26 @@ import styles from './Todo.module.css';
 import Task from '../components/Task.jsx';
 import TaskInput from '../components/TaskInput.jsx';
 
-const Todo = ({ tasks }) => {
-  const activeTasks = tasks.filter((task) => !task.done);
-  const doneTasks = tasks.filter((task) => task.done);
-
-  return (
-    <div className={styles.app}>
-      <h1 className={styles.top}>
-        {activeTasks.length}
-        {' '}
-        TaSkS ToDo
-        {' '}
-        {new Date().toLocaleDateString()}
-      </h1>
-      {[
-        ...activeTasks,
-        ...doneTasks,
-      ].map((task) => (
-        <Task
-          {...task}
-          key={task.id}
-        />
-      ))}
-      <TaskInput />
-    </div>
-  );
-};
+const Todo = ({ tasks }) => (
+  <div className={styles.app}>
+    <h1 className={styles.top}>
+      {tasks.length}
+      {' '}
+      TaSkS ToDo
+      {' '}
+      {new Date().toLocaleDateString()}
+    </h1>
+    {[
+      ...tasks,
+    ].map((task) => (
+      <Task
+        {...task}
+        key={task.id}
+      />
+    ))}
+    <TaskInput />
+  </div>
+);
 
 const mapStateToProps = (state) => ({
   tasks: state.tasks,

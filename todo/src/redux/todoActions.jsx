@@ -35,13 +35,16 @@ export const editTaskInput = (id, input) => {
 
 export const addTask = (input) => {
   const { tasks } = store.getState();
+  const id = tasks.length ? tasks.reduce((prev, cur) => (cur.id >= prev.id ? cur : prev),
+    { id: -Infinity }).id + 1 : 0;
 
   tasks.push({
-    id: tasks.length ? tasks[tasks.length - 1].id + 1 : 0,
+    id,
     title: input,
     done: false,
     editing: false,
   });
+  console.log(tasks);
   return {
     type: ADD_TAB,
     tasks,
@@ -63,6 +66,7 @@ export const doneTask = (id) => {
   const { tasks } = store.getState();
   const index = tasks.findIndex((task) => task.id === id);
   tasks[index].done = !tasks[index].done;
+  tasks.sort((a) => (a.done ? 1 : -1));
 
   return {
     type: DONE_TASK,
