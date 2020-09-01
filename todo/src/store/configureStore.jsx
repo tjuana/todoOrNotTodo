@@ -4,7 +4,7 @@ import reducer from '../reducers/index';
 
 export const initialState = {
   tasks: JSON.parse(localStorage.getItem('todo')) || [],
-  counter: JSON.parse(localStorage.getItem('todo')).counter,
+  counter: JSON.parse(localStorage.getItem('todo')) || 0,
 };
 
 const localStorageMiddleware = ({ getState }) => (next) => (action) => {

@@ -7,7 +7,7 @@ import {
 } from '../action/todoActions.jsx';
 
 const Task = ({
-  editing, id, isDone, title, del, doneTaskView, editView, editInput,
+  isEditMode, id, isDone, title, del, doneTaskView, editView, editInput,
 }) => {
   const handleClick = () => {
     if (isDone) {
@@ -35,7 +35,7 @@ const Task = ({
   const viewStyle = {};
   const editStyle = {};
 
-  if (editing) {
+  if (isEditMode) {
     viewStyle.display = 'none';
   } else {
     editStyle.display = 'none';
@@ -69,7 +69,7 @@ const Task = ({
 Task.propTypes = {
   doneTaskView: PropTypes.func.isRequired,
   del: PropTypes.func.isRequired,
-  editing: PropTypes.bool.isRequired,
+  isEditMode: PropTypes.bool.isRequired,
   editView: PropTypes.func.isRequired,
   editInput: PropTypes.func.isRequired,
   id: PropTypes.number.isRequired,

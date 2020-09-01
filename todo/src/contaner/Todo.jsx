@@ -35,7 +35,7 @@ Todo.propTypes = {
     PropTypes.shape({
       id: PropTypes.number.isRequired,
       isDone: PropTypes.bool.isRequired,
-      editing: PropTypes.bool.isRequired,
+      isEditMode: PropTypes.bool.isRequired,
       title: PropTypes.string.isRequired,
     }),
   ),
