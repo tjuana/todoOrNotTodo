@@ -60,3 +60,7 @@
   background-color: #1d88d43d;
   border-radius: 15px;
 }
+
+.hidden {
+  display: none;
+}

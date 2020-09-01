@@ -32,14 +32,6 @@ const Task = ({
   );
 
   const [inputVal, setInputVal] = useState(title);
-  const viewStyle = {};
-  const editStyle = {};
-
-  if (isEditMode) {
-    viewStyle.display = 'none';
-  } else {
-    editStyle.display = 'none';
-  }
 
   useEffect(() => {
     editInput(id, inputVal);
@@ -56,11 +48,10 @@ const Task = ({
 
   return (
     <div className={!isDone ? styles.task : styles.taskdone} onDoubleClick={handleEditView}>
-      <p style={viewStyle}>{title}</p>
+      <p className={!isEditMode ? 0 : styles.hidden}>{title}</p>
       <input
         onChange={handleChange}
-        style={editStyle}
-        className={styles.input}
+        className={isEditMode ? styles.input : styles.hidden}
         type="text"
         value={inputVal}
       />
