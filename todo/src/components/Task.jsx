@@ -40,16 +40,14 @@ const Task = ({
   } else {
     editStyle.display = 'none';
   }
-  console.log('Comop render');
+
   useEffect(() => {
-    console.log('vnature render');
+    editInput(id, inputVal);
   }, [inputVal]);
 
   const handleChange = (event) => {
     event.preventDefault();
     setInputVal(event.target.value);
-
-    editInput(id, inputVal);
   };
 
   const handleEditView = () => {
