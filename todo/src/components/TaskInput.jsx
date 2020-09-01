@@ -20,7 +20,7 @@ const TaskInput = ({ add }) => {
   };
 
   return (
-    <div className={styles.taskInput}>
+    <div className={styles.taskBlock}>
       <input onChange={inputChange} value={inputVal} />
       <button onClick={addTaskInput} type="button">ADD...</button>
     </div>
