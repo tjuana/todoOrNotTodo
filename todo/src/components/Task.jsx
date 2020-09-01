@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import styles from './Task.module.css';
 import {
   doneTask, deleteTask, editTaskView, editTaskInput,
-} from '../redux/todoActions.jsx';
+} from '../action/todoActions.jsx';
 
 const Task = ({
   editing, id, isDone, title, del, doneTaskView, editView, editInput,
@@ -31,7 +31,7 @@ const Task = ({
     </button>
   );
 
-  let inputValue = title;
+  const [inputVal, setInputVal] = useState(title);
   const viewStyle = {};
   const editStyle = {};
 
@@ -42,8 +42,9 @@ const Task = ({
   }
 
   const handleChange = (event) => {
-    inputValue = event.target.value;
-    editInput(id, inputValue);
+    event.preventDefault();
+    setInputVal(event.target.value);
+    editInput(id, inputVal);
   };
 
   const handleEditView = () => {
@@ -58,7 +59,7 @@ const Task = ({
         style={editStyle}
         className={styles.input}
         type="text"
-        value={inputValue}
+        value={inputVal}
       />
       <ActionBtn />
     </div>

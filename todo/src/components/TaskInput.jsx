@@ -1,43 +1,33 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import styles from './TaskInput.module.css';
-import { addTask } from '../redux/todoActions.jsx';
+import { addTask } from '../action/todoActions.jsx';
 
-class TuskInput extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      input: '',
-    };
-  }
+const TaskInput = ({ add }) => {
+  const [inputVal, setInputVal] = useState('');
 
-  addTaskInput = () => {
-    const { input } = this.state;
-    const { add } = this.props;
-    if (input) {
-      add(input);
-      this.setState({ input: '' });
+  const addTaskInput = () => {
+    if (inputVal) {
+      add(inputVal);
+      setInputVal('');
     }
   };
 
-  inputChange = (event) => {
+  const inputChange = (event) => {
     event.preventDefault();
-    this.setState({ input: event.target.value });
+    setInputVal(event.target.value);
   };
 
-  render() {
-    const { input } = this.state;
-    return (
-      <div className={styles.taskInput}>
-        <input onChange={this.inputChange} value={input} />
-        <button onClick={this.addTaskInput} type="submit">ADD...</button>
-      </div>
-    );
-  }
-}
+  return (
+    <div className={styles.taskInput}>
+      <input onChange={inputChange} value={inputVal} />
+      <button onClick={addTaskInput} type="submit">ADD...</button>
+    </div>
+  );
+};
 
-TuskInput.propTypes = {
+TaskInput.propTypes = {
   add: PropTypes.func.isRequired,
 };
 
@@ -45,4 +35,4 @@ const mapDispatchToProps = {
   add: addTask,
 };
 
-export default connect(null, mapDispatchToProps)(TuskInput);
+export default connect(null, mapDispatchToProps)(TaskInput);
