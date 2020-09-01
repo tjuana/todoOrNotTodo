@@ -4,12 +4,15 @@ import PropTypes from 'prop-types';
 import styles from './TaskInput.module.css';
 import { addTask } from '../action/todoActions.jsx';
 
-const TaskInput = ({ add }) => {
+const TaskInput = ({ add, tasks }) => {
   const [inputVal, setInputVal] = useState('');
 
   const addTaskInput = () => {
+    const id = tasks.length
+      ? tasks.reduce((prev, cur) => (cur.id >= prev.id ? cur : prev),
+        { id: -Infinity }).id + 1 : 0;
     if (inputVal) {
-      add(inputVal);
+      add(inputVal, id);
       setInputVal('');
     }
   };
@@ -29,10 +32,24 @@ const TaskInput = ({ add }) => {
 
 TaskInput.propTypes = {
   add: PropTypes.func.isRequired,
+  tasks: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      isDone: PropTypes.bool.isRequired,
+      isEditMode: PropTypes.bool.isRequired,
+      title: PropTypes.string.isRequired,
+    }),
+  ),
 };
 
 const mapDispatchToProps = {
   add: addTask,
 };
 
-export default connect(null, mapDispatchToProps)(TaskInput);
+TaskInput.defaultProps = {
+  tasks: [],
+};
+
+export default connect((state) => ({
+  tasks: state.tasks,
+}), mapDispatchToProps)(TaskInput);

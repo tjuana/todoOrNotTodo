@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import styles from './Task.module.css';
@@ -40,10 +40,15 @@ const Task = ({
   } else {
     editStyle.display = 'none';
   }
+  console.log('Comop render');
+  useEffect(() => {
+    console.log('vnature render');
+  }, [inputVal]);
 
   const handleChange = (event) => {
     event.preventDefault();
     setInputVal(event.target.value);
+
     editInput(id, inputVal);
   };
 
