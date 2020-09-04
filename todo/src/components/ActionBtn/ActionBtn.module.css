@@ -1,0 +1,10 @@
+.actionbtn {
+  border-radius: 15px;
+  cursor: pointer;
+  margin-left: 15px;
+}
+
+.actionbtn:hover {
+  background-color: #1d88d43d;
+  border-radius: 15px;
+}

@@ -2,8 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import styles from './Todo.module.css';
-import Task from '../components/Task.jsx';
-import TaskInput from '../components/TaskInput.jsx';
+import Task from '../components/Task/Task.jsx';
+import TaskInput from '../components/TaskInput/TaskInput.jsx';
 
 const Todo = ({ tasks }) => (
   <div className={styles.app}>
@@ -14,9 +14,7 @@ const Todo = ({ tasks }) => (
       {' '}
       {new Date().toLocaleDateString()}
     </h1>
-    {[
-      ...tasks,
-    ].map((task) => (
+    {tasks.map((task) => (
       <Task
         {...task}
         key={task.id}

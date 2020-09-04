@@ -2,35 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import styles from './Task.module.css';
-import {
-  doneTask, deleteTask, editTaskView, editTaskInput,
-} from '../action/todoActions.jsx';
+import { editTaskView, editTaskInput } from '../../action/todoActions.jsx';
+import ActionBtn from '../ActionBtn/ActionBtn.jsx';
 
 const Task = ({
-  isEditMode, id, isDone, title, del, doneTaskView, editView, editInput,
+  isEditMode, id, isDone, title, editView, editInput,
 }) => {
-  const handleClick = () => {
-    if (isDone) {
-      del(id);
-    } else {
-      doneTaskView(id);
-    }
-  };
-
-  const ActionBtn = () => (
-    <button className={styles.actionbtn} onClick={handleClick} type="submit">
-      {!isDone ? (
-        <span aria-label="delete" role="img">
-          ✅
-        </span>
-      ) : (
-        <span aria-label="done" role="img">
-          🎯
-        </span>
-      )}
-    </button>
-  );
-
   const [inputVal, setInputVal] = useState(title);
 
   useEffect(() => {
@@ -38,8 +15,8 @@ const Task = ({
   }, [inputVal]);
 
   const handleChange = (event) => {
-    event.preventDefault();
     setInputVal(event.target.value);
+    // event.preventDefault();
   };
 
   const handleEditView = () => {
@@ -55,14 +32,15 @@ const Task = ({
         type="text"
         value={inputVal}
       />
-      <ActionBtn />
+      <ActionBtn
+        isDone={isDone}
+        id={id}
+      />
     </div>
   );
 };
 
 Task.propTypes = {
-  doneTaskView: PropTypes.func.isRequired,
-  del: PropTypes.func.isRequired,
   isEditMode: PropTypes.bool.isRequired,
   editView: PropTypes.func.isRequired,
   editInput: PropTypes.func.isRequired,
@@ -72,10 +50,10 @@ Task.propTypes = {
 };
 
 const mapDispatchToProps = {
-  del: deleteTask,
-  doneTaskView: doneTask,
   editView: editTaskView,
   editInput: editTaskInput,
 };
 
 export default connect(null, mapDispatchToProps)(Task);
+
+export { Task as TaskList };

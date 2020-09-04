@@ -1,11 +1,14 @@
+
 import {
   ADD_TAB, DELETE_TASK, EDIT_TASK_INPUT, EDIT_TASK_VIEW, DONE_TASK,
 } from '../const';
 
-export const editTaskView = (id) => ({
-  type: EDIT_TASK_VIEW,
-  payload: id,
-});
+export const editTaskView = (id) => {
+  return {
+    type: EDIT_TASK_VIEW,
+    payload: id,
+  };
+};
 
 export const editTaskInput = (id, inputValue) => ({
   type: EDIT_TASK_INPUT,

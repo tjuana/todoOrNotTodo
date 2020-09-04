@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import styles from './TaskInput.module.css';
-import { addTask } from '../action/todoActions.jsx';
+import { addTask, editTaskView } from '../../action/todoActions.jsx';
 
 const TaskInput = ({ add, tasks }) => {
   const [inputVal, setInputVal] = useState('');
@@ -18,8 +18,8 @@ const TaskInput = ({ add, tasks }) => {
   };
 
   const inputChange = (event) => {
-    event.preventDefault();
     setInputVal(event.target.value);
+    // event.preventDefault();
   };
 
   return (
@@ -44,6 +44,7 @@ TaskInput.propTypes = {
 
 const mapDispatchToProps = {
   add: addTask,
+  editView: editTaskView,
 };
 
 TaskInput.defaultProps = {
@@ -53,3 +54,5 @@ TaskInput.defaultProps = {
 export default connect((state) => ({
   tasks: state.tasks,
 }), mapDispatchToProps)(TaskInput);
+
+export { TaskInput as TaskInputl };

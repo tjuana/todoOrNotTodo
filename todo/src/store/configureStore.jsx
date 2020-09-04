@@ -1,5 +1,4 @@
 import { createStore, applyMiddleware } from 'redux';
-import logger from 'redux-logger';
 import reducer from '../reducers/index';
 
 export const initialState = {
@@ -16,4 +15,4 @@ const localStorageMiddleware = ({ getState }) => (next) => (action) => {
 };
 
 export const store = createStore(reducer, initialState,
-  applyMiddleware(localStorageMiddleware, logger));
+  applyMiddleware(localStorageMiddleware));
