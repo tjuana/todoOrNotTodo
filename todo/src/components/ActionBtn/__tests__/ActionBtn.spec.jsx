@@ -2,7 +2,7 @@ import { shallow, mount } from 'enzyme';
 import React from 'react';
 import {Button} from '../ActionBtn.jsx';
 
-describe('Task lits component test', () => {
+describe('ActionBtn component test', () => {
   let props
   let wrap
 

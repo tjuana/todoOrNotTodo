@@ -44,3 +44,5 @@ Todo.defaultProps = {
 };
 
 export default connect(mapStateToProps)(Todo);
+
+export { Todo as TodoList };

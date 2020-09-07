@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Todo component test should  1`] = `
+<div
+  className="app"
+>
+  <h1
+    className="top"
+  >
+    0
+     
+    TaSkS ToDo
+     
+    2020-9-7
+  </h1>
+  <div
+    className="taskBlock"
+  >
+    <input
+      onChange={[Function]}
+      value=""
+    />
+    <button
+      onClick={[Function]}
+      type="button"
+    >
+      ADD...
+    </button>
+  </div>
+</div>
+`;

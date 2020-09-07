@@ -4,22 +4,18 @@ import renderer from 'react-test-renderer';
 import { TaskInputl } from '../TaskInput.jsx';
 
 describe('TaskInput component test', () => {
-  let props
-  let wrap
-  let event
-  let inputVal
-  // let addTaskInput
+  let props;
+  let wrap;
+  let event;
+  let inputVal;
+
   beforeEach(() => {
-    event = {
-      preventDefault: jest.fn(),
-    };
-    
     props = {
       add: jest.fn(),
       tasks: [],
       inputChange: jest.fn(),
     };
-    wrap = shallow(<TaskInputl {...props}/>);
+    wrap = shallow(<TaskInputl {...props} />);
   });
   it('should render init state', () => {
     expect(wrap.find('input').length).toBe(1);
@@ -32,7 +28,7 @@ describe('TaskInput component test', () => {
 
   it('should ', () => {
     const input = wrap.find('input');
-    input.simulate('change', { 'target': { 'value': 'change' } });
+    input.simulate('change', { target: { value: 'change' } });
     expect(wrap.find('input').prop('value')).toBe('change');
   });
 
@@ -43,7 +39,7 @@ describe('TaskInput component test', () => {
 
   it('should button click', () => {
     const input = wrap.find('input');
-    input.simulate('change', { 'target': { 'value': 'change' } });
+    input.simulate('change', { target: { value: 'change' } });
     wrap.find('button').at(0).simulate('click');
     expect(props.add).toHaveBeenCalledTimes(1);
   });
