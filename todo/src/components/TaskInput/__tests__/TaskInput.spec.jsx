@@ -13,7 +13,6 @@ describe('TaskInput component test', () => {
     props = {
       add: jest.fn(),
       tasks: [],
-      inputChange: jest.fn(),
     };
     wrap = shallow(<TaskInputl {...props} />);
   });

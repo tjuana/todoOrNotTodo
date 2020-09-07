@@ -1,37 +1,66 @@
-
+import { store } from '../store/configureStore.jsx';
 import {
   ADD_TAB, DELETE_TASK, EDIT_TASK_INPUT, EDIT_TASK_VIEW, DONE_TASK,
 } from '../const';
 
 export const editTaskView = (id) => {
+  let { tasks } = store.getState();
+  tasks = tasks.map((task) => (task.id === id
+    ? { ...task, isEditMode: !task.isEditMode }
+    : task));
+
   return {
     type: EDIT_TASK_VIEW,
-    payload: id,
+    payload: tasks,
   };
 };
 
-export const editTaskInput = (id, inputValue) => ({
-  type: EDIT_TASK_INPUT,
-  payload: {
-    id,
-    inputValue,
-  },
-});
+export const editTaskInput = (id, inputValue) => {
+  let { tasks } = store.getState();
+  tasks = tasks.map((task) => (task.id === id
+    ? { ...task, title: inputValue }
+    : task));
 
-export const addTask = (inputValue, id) => ({
-  type: ADD_TAB,
-  payload: {
-    id,
-    inputValue,
-  },
-});
+  return {
+    type: EDIT_TASK_INPUT,
+    payload: tasks,
+  };
+};
 
-export const deleteTask = (id) => ({
-  type: DELETE_TASK,
-  payload: id,
-});
+export const addTask = (inputValue, id) => {
+  const { tasks } = store.getState();
 
-export const doneTask = (id) => ({
-  type: DONE_TASK,
-  payload: id,
-});
+  return {
+    type: ADD_TAB,
+    payload: [
+      ...tasks,
+      {
+        id,
+        title: inputValue,
+        isDone: false,
+        isEditMode: false,
+      },
+    ],
+  };
+};
+
+export const deleteTask = (id) => {
+  const { tasks } = store.getState();
+
+  return {
+    type: DELETE_TASK,
+    payload: [...tasks].filter((task) => id !== task.id),
+  };
+};
+
+export const doneTask = (id) => {
+  const { tasks } = store.getState();
+
+  return {
+    type: DONE_TASK,
+    payload: tasks.map((task) => (
+      task.id === id
+        ? { ...task, isDone: !task.isDone }
+        : task)),
+  };
+};

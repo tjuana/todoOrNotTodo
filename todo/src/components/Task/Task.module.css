@@ -1,6 +1,6 @@
 .task {
   display: flex;
-  padding: 5px;
+  padding: 0px;
   margin: 5px;
   border-radius: 5px;
   justify-content: space-between;
@@ -44,7 +44,7 @@
 
 .taskdone {
   display: flex;
-  padding: 5px;
+  padding: 0px;
   margin: 5px;
   border-radius: 5px;
   justify-content: space-between;

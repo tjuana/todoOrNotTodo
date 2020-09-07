@@ -18,15 +18,18 @@ const TaskInput = ({ add, tasks }) => {
   };
 
   const inputChange = (event) => {
-    setInputVal(event.target.value);
     // event.preventDefault();
+    setInputVal(event.target.value);
   };
 
   return (
-    <div className={styles.taskBlock}>
-      <input onChange={inputChange} value={inputVal} />
-      <button onClick={addTaskInput} type="button">ADD...</button>
-    </div>
+    <form onSubmit={addTaskInput}>
+      <div className={styles.taskBlock}>
+        <input onChange={inputChange} value={inputVal} />
+        <button onClick={addTaskInput} type="button">ADD...</button>
+      </div>
+      {' '}
+    </form>
   );
 };
 

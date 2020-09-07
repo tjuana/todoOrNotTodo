@@ -14,8 +14,9 @@ const JSONMock = {
 };
 
 const eventTest = {
-  preventDefault: jest.fn()
+  preventDefault: jest.fn(),
 };
 
 global.localStorage = localStorageMock;
 global.JSON = JSONMock;
+global.event = eventTest;

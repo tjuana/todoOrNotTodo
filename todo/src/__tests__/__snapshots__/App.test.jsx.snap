@@ -13,19 +13,24 @@ exports[`Todo component test should  1`] = `
      
     2020-9-7
   </h1>
-  <div
-    className="taskBlock"
+  <form
+    onSubmit={[Function]}
   >
-    <input
-      onChange={[Function]}
-      value=""
-    />
-    <button
-      onClick={[Function]}
-      type="button"
+    <div
+      className="taskBlock"
     >
-      ADD...
-    </button>
-  </div>
+      <input
+        onChange={[Function]}
+        value=""
+      />
+      <button
+        onClick={[Function]}
+        type="button"
+      >
+        ADD...
+      </button>
+    </div>
+     
+  </form>
 </div>
 `;

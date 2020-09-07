@@ -15,8 +15,8 @@ const Task = ({
   }, [inputVal]);
 
   const handleChange = (event) => {
-    setInputVal(event.target.value);
     // event.preventDefault();
+    setInputVal(event.target.value);
   };
 
   const handleEditView = () => {
@@ -25,18 +25,25 @@ const Task = ({
 
   return (
     <div className={!isDone ? styles.task : styles.taskdone} onDoubleClick={handleEditView}>
-      <p className={!isEditMode ? 0 : styles.hidden}>{title}</p>
-      <input
-        onChange={handleChange}
-        className={isEditMode ? styles.input : styles.hidden}
-        type="text"
-        value={inputVal}
-      />
+      <ul>
+        <li>
+          <p className={!isEditMode ? 0 : styles.hidden}>{title}</p>
+          <form onSubmit={handleEditView}>
+            <input
+              onChange={handleChange}
+              className={isEditMode ? styles.input : styles.hidden}
+              type="text"
+              value={inputVal}
+            />
+          </form>
+        </li>
+      </ul>
       <ActionBtn
         isDone={isDone}
         id={id}
       />
     </div>
+
   );
 };
 
