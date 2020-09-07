@@ -12,7 +12,7 @@ const Task = ({
 
   useEffect(() => {
     editInput(id, inputVal);
-  }, [inputVal]);
+  });
 
   const handleChange = (event) => {
     // event.preventDefault();
@@ -24,9 +24,9 @@ const Task = ({
   };
 
   return (
-    <div className={!isDone ? styles.task : styles.taskdone} onDoubleClick={handleEditView}>
+    <div className={!isDone ? styles.task : styles.taskdone}>
       <ul>
-        <li>
+        <li onDoubleClick={handleEditView}>
           <p className={!isEditMode ? 0 : styles.hidden}>{title}</p>
           <form onSubmit={handleEditView}>
             <input
@@ -36,6 +36,7 @@ const Task = ({
               value={inputVal}
             />
           </form>
+
         </li>
       </ul>
       <ActionBtn

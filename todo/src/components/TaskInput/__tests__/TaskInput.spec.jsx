@@ -1,21 +1,23 @@
-import { shallow, mount } from 'enzyme';
+import { shallow } from 'enzyme';
 import React from 'react';
-import renderer from 'react-test-renderer';
 import { TaskInputl } from '../TaskInput.jsx';
 
 describe('TaskInput component test', () => {
   let props;
   let wrap;
   let event;
-  let inputVal;
 
   beforeEach(() => {
     props = {
       add: jest.fn(),
       tasks: [],
     };
-    wrap = shallow(<TaskInputl {...props} />);
+    event = {
+      preventDefault: jest.fn()
+    };
+    wrap = shallow(<TaskInputl {...props} {...event} />);
   });
+
   it('should render init state', () => {
     expect(wrap.find('input').length).toBe(1);
     expect(wrap.find('button').length).toBe(1);

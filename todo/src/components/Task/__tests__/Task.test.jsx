@@ -5,6 +5,7 @@ import { TaskList } from '../Task.jsx';
 describe('Task lits component test', () => {
   let props;
   let wrap;
+  const event = { preventDefault: () => {} };
 
   beforeEach(() => {
     props = {
@@ -16,6 +17,7 @@ describe('Task lits component test', () => {
       title: 'blabla',
     };
     wrap = shallow(<TaskList {...props} />);
+    jest.spyOn(event, 'preventDefault');
   });
 
   it('should render init state', () => {
@@ -25,7 +27,7 @@ describe('Task lits component test', () => {
   });
 
   it('should handleDoubleClick and text of p', () => {
-    wrap.find('div').simulate('DoubleClick');
+    wrap.find('li').simulate('DoubleClick');
     expect(props.editView).toHaveBeenCalledTimes(1);
     expect(wrap.find('p').text()).toBe('blabla');
     wrap.find('input').simulate('change', { target: { value: 'change' } });

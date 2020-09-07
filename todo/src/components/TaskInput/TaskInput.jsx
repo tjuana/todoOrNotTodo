@@ -28,7 +28,6 @@ const TaskInput = ({ add, tasks }) => {
         <input onChange={inputChange} value={inputVal} />
         <button onClick={addTaskInput} type="button">ADD...</button>
       </div>
-      {' '}
     </form>
   );
 };
