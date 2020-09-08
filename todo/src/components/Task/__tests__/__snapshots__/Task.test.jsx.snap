@@ -9,7 +9,7 @@ exports[`Task lits component test should Task snap 1`] = `
       onDoubleClick={[Function]}
     >
       <p
-        className={false}
+        className=""
       >
         blabla2
       </p>
@@ -17,7 +17,7 @@ exports[`Task lits component test should Task snap 1`] = `
         onSubmit={[Function]}
       >
         <input
-          className="hidden"
+          className="input hidden"
           onChange={[Function]}
           type="text"
           value="blabla2"

@@ -4,20 +4,30 @@
   margin: 5px;
   border-radius: 5px;
   justify-content: space-between;
+
 }
 
 .task:hover {
   background-color: #04395e3d;
+  transition: background-color 1s;
 }
 
 .task p {
+  opacity: 1;
+  animation: taskp .3s linear forwards;
+  animation-direction: alternate;
   font-size: 19px;
   font-weight: 750;
   margin: 0;
   color: #0d568a;
 }
 
+@keyframes taskp {
+
+}
+
 .input {
+  animation-direction: alternate;
   font-size: 20px;
   font-weight: 750;
   margin: 0;
@@ -27,8 +37,28 @@
   border-radius: 15px;
 }
 
+@keyframes inputAnim {
+  from {
+    opacity: 0;
+    transform: translateY(-400px);
+}
+
+to {
+    opacity: 1;
+    transform : translateY(0);
+}
+}
+
 .taskdone {
+  animation-name: taskdone;
+  animation-duration: 2s;
+  animation-direction: alternate-reverse;
   background-color: #00000027;
+}
+
+@keyframes taskdone {
+  from {background-color: white;}
+  to {background-color: rgb(204, 73, 73);}
 }
 
 .taskdone p {

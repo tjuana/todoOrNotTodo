@@ -1,4 +1,4 @@
-import { shallow, mount } from 'enzyme';
+import { shallow } from 'enzyme';
 import renderer from 'react-test-renderer';
 import React from 'react';
 import { Provider } from 'react-redux';
@@ -24,24 +24,18 @@ describe('Task lits component test', () => {
       title: 'blabla2',
     };
     wrap = shallow(<TaskList {...props} />);
-    jest.spyOn(event, 'preventDefault');
+    //jest.spyOn(event, 'preventDefault');
   });
 
   test('should Task snap', () => {
     store = mockStore(initialState);
     const component = renderer.create(
       <Provider store={store}>
-        <ConnectedTask {...props} />
+        <ConnectedTask {...props}/>
       </Provider>,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
-  });
-
-  it('should render init state', () => {
-    expect(wrap.find('div').length).toBe(1);
-    expect(wrap.find('p').length).toBe(1);
-    expect(wrap.find('input').length).toBe(1);
   });
 
   it('should handleDoubleClick and text of p', () => {
