@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Todo component test should snapshot 1`] = `
+exports[`App component test should snapshot 1`] = `
 <div
   className="app"
 >

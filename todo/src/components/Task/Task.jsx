@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import cx from 'classnames';
 import styles from './Task.module.css';
 import { editTaskView, editTaskInput } from '../../action/todoActions.jsx';
 import ActionBtn from '../ActionBtn/ActionBtn.jsx';
@@ -15,7 +16,7 @@ const Task = ({
   }, [inputVal, id, editInput]);
 
   const handleChange = (event) => {
-    //event.preventDefault();
+    event.preventDefault();
     setInputVal(event.target.value);
   };
 
@@ -24,14 +25,15 @@ const Task = ({
   };
 
   return (
-    <div className={!isDone ? styles.task : styles.taskdone}>
+    <div className={cx(styles.task, { [styles.taskdone]: isDone })}>
+
       <ul>
         <li onDoubleClick={handleEditView}>
-          <p className={isEditMode && styles.hidden}>{title}</p>
+          <p className={cx({ [styles.hidden]: isEditMode })}>{title}</p>
           <form onSubmit={handleEditView}>
             <input
               onChange={handleChange}
-              className={isEditMode ? styles.input : styles.hidden}
+              className={cx(styles.input, { [styles.hidden]: !isEditMode })}
               type="text"
               value={inputVal}
             />

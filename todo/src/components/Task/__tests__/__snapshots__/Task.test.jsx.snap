@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Task lits component test should Task snap 1`] = `
+<div
+  className="task"
+>
+  <ul>
+    <li
+      onDoubleClick={[Function]}
+    >
+      <p
+        className={false}
+      >
+        blabla2
+      </p>
+      <form
+        onSubmit={[Function]}
+      >
+        <input
+          className="hidden"
+          onChange={[Function]}
+          type="text"
+          value="blabla2"
+        />
+      </form>
+    </li>
+  </ul>
+  <button
+    className="actionbtn"
+    onClick={[Function]}
+    type="submit"
+  >
+    <span
+      aria-label="delete"
+      role="img"
+    >
+      ✅
+    </span>
+  </button>
+</div>
+`;

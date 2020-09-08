@@ -1,11 +1,18 @@
 import { shallow, mount } from 'enzyme';
+import renderer from 'react-test-renderer';
 import React from 'react';
-import { TaskList } from '../Task.jsx';
+import { Provider } from 'react-redux';
+import configureStore from 'redux-mock-store';
+import ConnectedTask, { TaskList } from '../Task.jsx';
+
+import initialState from '../../../store/configureStore.jsx';
 
 describe('Task lits component test', () => {
   let props;
   let wrap;
   const event = { preventDefault: () => {} };
+  const mockStore = configureStore();
+  let store;
 
   beforeEach(() => {
     props = {
@@ -14,10 +21,21 @@ describe('Task lits component test', () => {
       id: 0,
       isEditMode: false,
       isDone: false,
-      title: 'blabla',
+      title: 'blabla2',
     };
     wrap = shallow(<TaskList {...props} />);
     jest.spyOn(event, 'preventDefault');
+  });
+
+  test('should Task snap', () => {
+    store = mockStore(initialState);
+    const component = renderer.create(
+      <Provider store={store}>
+        <ConnectedTask {...props} />
+      </Provider>,
+    );
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
   });
 
   it('should render init state', () => {
@@ -29,7 +47,7 @@ describe('Task lits component test', () => {
   it('should handleDoubleClick and text of p', () => {
     wrap.find('li').simulate('DoubleClick');
     expect(props.editView).toHaveBeenCalledTimes(1);
-    expect(wrap.find('p').text()).toBe('blabla');
+    expect(wrap.find('p').text()).toBe('blabla2');
     wrap.find('input').simulate('change', { target: { value: 'change' } });
     expect(wrap.find('input').prop('value')).toBe('change');
   });
