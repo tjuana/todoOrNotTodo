@@ -49,7 +49,7 @@ export const deleteTask = (id) => {
 
   return {
     type: DELETE_TASK,
-    payload: [...tasks].filter((task) => id !== task.id),
+    payload: tasks.filter((task) => id !== task.id),
   };
 };
 

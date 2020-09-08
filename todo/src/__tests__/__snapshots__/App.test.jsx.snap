@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Todo component test should  1`] = `
+exports[`Todo component test should snapshot 1`] = `
 <div
   className="app"
 >
@@ -11,7 +11,7 @@ exports[`Todo component test should  1`] = `
      
     TaSkS ToDo
      
-    2020-9-7
+    2020-9-8
   </h1>
   <form
     onSubmit={[Function]}
@@ -30,7 +30,6 @@ exports[`Todo component test should  1`] = `
         ADD...
       </button>
     </div>
-     
   </form>
 </div>
 `;

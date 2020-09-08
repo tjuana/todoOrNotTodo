@@ -13,7 +13,7 @@ describe('TaskInput component test', () => {
       tasks: [],
     };
     event = {
-      preventDefault: jest.fn()
+      preventDefault: jest.fn(),
     };
     wrap = shallow(<TaskInputl {...props} {...event} />);
   });
