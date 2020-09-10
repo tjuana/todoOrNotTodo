@@ -1,0 +1,13 @@
+.actionbtn {
+  border-radius: 15px;
+  cursor: pointer;
+  margin-left: 15px;
+  width: 47px;
+}
+
+.actionbtn:hover {
+  transform: rotate(360deg);
+  transition: all 2s;
+  background-color: #1d88d43d;
+  border-radius: 15px;
+}

@@ -1,0 +1,100 @@
+.task {
+  display: flex;
+  padding: 0px;
+  margin: 5px;
+  border-radius: 5px;
+  justify-content: space-between;
+}
+
+.taskInputView {
+  animation-name: taskInputView;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+}
+
+.task:hover {
+  background-color: rgba(82, 76, 76, 0.329);
+  transition: background-color 2s;
+}
+
+.task li {
+  font-size: 19px;
+  font-weight: 750;
+  margin: 0;
+  color: #0d568a;
+  overflow: visible;
+  margin-bottom: 0.2px;
+  line-height: 1.7;
+}
+
+@keyframes taskInputView {
+  from {
+    opacity: 0;
+    transform: translateX(-400px);
+}
+
+to {
+    opacity: 1;
+    transform : translateX(0);
+}
+}
+
+.input {
+  font-size: 20px;
+  font-weight: 750;
+  margin: 0;
+  color:#0d568a;
+  background-color: aliceblue;
+  text-align: center;
+  border-radius: 15px;
+}
+
+.taskdone {
+  background-color: #00000027;
+  display: flex;
+  padding: 0px;
+  margin: 5px;
+  border-radius: 5px;
+  justify-content: space-between;
+}
+
+.taskdone p {
+  color: #00000050;
+}
+
+.taskdone p {
+  font-size: 20px;
+  font-weight: 750;
+  margin: 0;
+  color: #0d568a;
+}
+
+.taskdone:hover {
+  background-color: lightcoral;
+}
+
+.hidden {
+  transition: 1s;
+  display: none;
+}
+
+.enter {
+  opacity: 0;
+  transform: scale(5);
+}
+
+.enterActive {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.exit {
+  opacity: 1;
+}
+
+.exitActive {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 300ms, transform 300ms;
+}

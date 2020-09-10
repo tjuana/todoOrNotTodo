@@ -1,0 +1,29 @@
+.taskBlock {
+  border-radius: 17px;
+  margin-top: 1px;
+  background-color: #0d568a;
+  display: flex;
+  padding: 4px;
+}
+ 
+.taskBlock input {
+  border-radius: 15px;
+  width: 100%;
+  border: none;
+  padding: 5px;
+  font-size: 18px;
+  font-weight: 500;
+  color: #0d568a;
+}
+
+.taskBlock button {
+  border-radius: 15px;
+  background-color: transparent;
+  border: none;
+  font-size: 20px;
+  font-weight: 750;
+  text-transform: uppercase;
+  color: #ffffff;
+  cursor: pointer;
+  margin-left: 2px;
+} 
