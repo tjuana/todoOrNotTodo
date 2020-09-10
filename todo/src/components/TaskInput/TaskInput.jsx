@@ -18,7 +18,7 @@ const TaskInput = ({ add, tasks }) => {
   };
 
   const inputChange = (event) => {
-    // event.preventDefault();
+    event.preventDefault();
     setInputVal(event.target.value);
   };
 

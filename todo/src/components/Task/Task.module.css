@@ -4,30 +4,42 @@
   margin: 5px;
   border-radius: 5px;
   justify-content: space-between;
+}
 
+.taskInputView {
+  animation-name: taskInputView;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
 }
 
 .task:hover {
-  background-color: #04395e3d;
-  transition: background-color 1s;
+  background-color: rgba(82, 76, 76, 0.329);
+  transition: background-color 2s;
 }
 
-.task p {
-  opacity: 1;
-  animation: taskp .3s linear forwards;
-  animation-direction: alternate;
+.task li {
   font-size: 19px;
   font-weight: 750;
   margin: 0;
   color: #0d568a;
+  overflow: visible;
+  margin-bottom: 0.2px;
+  line-height: 1.7;
 }
 
-@keyframes taskp {
+@keyframes taskInputView {
+  from {
+    opacity: 0;
+    transform: translateX(-400px);
+}
 
+to {
+    opacity: 1;
+    transform : translateX(0);
+}
 }
 
 .input {
-  animation-direction: alternate;
   font-size: 20px;
   font-weight: 750;
   margin: 0;
@@ -37,28 +49,13 @@
   border-radius: 15px;
 }
 
-@keyframes inputAnim {
-  from {
-    opacity: 0;
-    transform: translateY(-400px);
-}
-
-to {
-    opacity: 1;
-    transform : translateY(0);
-}
-}
-
 .taskdone {
-  animation-name: taskdone;
-  animation-duration: 2s;
-  animation-direction: alternate-reverse;
   background-color: #00000027;
-}
-
-@keyframes taskdone {
-  from {background-color: white;}
-  to {background-color: rgb(204, 73, 73);}
+  display: flex;
+  padding: 0px;
+  margin: 5px;
+  border-radius: 5px;
+  justify-content: space-between;
 }
 
 .taskdone p {
@@ -72,14 +69,29 @@ to {
   color: #0d568a;
 }
 
-.taskdone {
-  display: flex;
-  padding: 0px;
-  margin: 5px;
-  border-radius: 5px;
-  justify-content: space-between;
+.taskdone:hover {
+  background-color: lightcoral;
 }
 
 .hidden {
+  transition: 1s;
   display: none;
+}
+
+.enter {
+  opacity: 0;
+  transform: scale(5);
+}
+.enterActive {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 300ms, transform 300ms;
+}
+.exit {
+  opacity: 1;
+}
+.exitActive {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 300ms, transform 300ms;
 }

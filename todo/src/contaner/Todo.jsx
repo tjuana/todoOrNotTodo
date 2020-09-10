@@ -21,11 +21,12 @@ const Todo = ({ tasks }) => (
       />
     ))}
     <TaskInput />
+
   </div>
 );
 
 const mapStateToProps = (state) => ({
-  tasks: state.tasks.sort((a) => (a.isDone ? 1 : -1)),
+  tasks: state.tasks,
 });
 
 Todo.propTypes = {

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
+import { CSSTransition } from 'react-transition-group';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import styles from './Task.module.css';
@@ -9,6 +10,7 @@ import ActionBtn from '../ActionBtn/ActionBtn.jsx';
 const Task = ({
   isEditMode, id, isDone, title, editView, editInput,
 }) => {
+  const [inProp, setInProp] = useState(false);
   const [inputVal, setInputVal] = useState(title);
 
   useEffect(() => {
@@ -16,35 +18,36 @@ const Task = ({
   }, [inputVal, id, editInput]);
 
   const handleChange = (event) => {
-    //event.preventDefault();
+    event.preventDefault();
     setInputVal(event.target.value);
   };
 
   const handleEditView = () => {
     editView(id);
+    // setInProp(true);
   };
 
   return (
-    <div className={cx(styles.task, isDone && styles.taskdone)}>
-      <ul>
-        <li onDoubleClick={handleEditView}>
-          <p className={cx(isEditMode && styles.hidden)}>{title}</p>
-          <form onSubmit={handleEditView}>
-            <input
-              onChange={handleChange}
-              className={cx(styles.input, !isEditMode && styles.hidden)}
-              type="text"
-              value={inputVal}
-            />
-          </form>
+    <div className={cx(styles.task, (isDone && styles.taskdone))}>
+      <CSSTransition in={isDone} timeout={200} classNames={{ ...styles }}>
+        <li onDoubleClick={handleEditView} className={cx(isEditMode && styles.hidden)}>
+          {title}
         </li>
-      </ul>
+      </CSSTransition>
+      <form onSubmit={handleEditView}>
+        <input
+          onChange={handleChange}
+          className={cx(styles.input, (!isEditMode && styles.hidden),
+            isEditMode && styles.taskInputView)}
+          type="text"
+          value={inputVal}
+        />
+      </form>
       <ActionBtn
         isDone={isDone}
         id={id}
       />
     </div>
-
   );
 };
 

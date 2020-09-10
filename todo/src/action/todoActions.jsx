@@ -40,7 +40,7 @@ export const addTask = (inputValue, id) => {
         isDone: false,
         isEditMode: false,
       },
-    ],
+    ].sort((a) => (a.isDone ? 1 : -1)),
   };
 };
 
@@ -61,6 +61,6 @@ export const doneTask = (id) => {
     payload: tasks.map((task) => (
       task.id === id
         ? { ...task, isDone: !task.isDone }
-        : task)),
+        : task)).sort((a) => (a.isDone ? 1 : -1)),
   };
 };
