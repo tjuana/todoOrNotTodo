@@ -30,9 +30,9 @@ const Task = ({
   return (
     <div className={cx(styles.task, (isDone && styles.taskdone))}>
       <CSSTransition in={isDone} timeout={200} classNames={{ ...styles }}>
-        <li onDoubleClick={handleEditView} className={cx(isEditMode && styles.hidden)}>
+        <p onDoubleClick={handleEditView} className={cx(isEditMode && styles.hidden)}>
           {title}
-        </li>
+        </p>
       </CSSTransition>
       <form onSubmit={handleEditView}>
         <input
