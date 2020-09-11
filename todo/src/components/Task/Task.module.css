@@ -17,7 +17,7 @@
   transition: background-color 2s;
 }
 
-.task li {
+.task p {
   font-size: 19px;
   font-weight: 750;
   margin: 0;
