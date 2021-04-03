@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
@@ -26,6 +27,7 @@ const Task = ({
 
   return (
     <div className={cx(styles.task, isDone && styles.taskdone)}>
+      <Link to='w'> go to the wp content! </Link>
       <ul>
         <li onDoubleClick={handleEditView}>
           <p className={cx(isEditMode && styles.hidden)}>{title}</p>

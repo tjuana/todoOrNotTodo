@@ -13,21 +13,16 @@
 }
 
 .task p {
-  opacity: 1;
-  animation: taskp .3s linear forwards;
-  animation-direction: alternate;
   font-size: 19px;
   font-weight: 750;
   margin: 0;
   color: #0d568a;
 }
 
-@keyframes taskp {
-
-}
 
 .input {
-  animation-direction: alternate;
+  animation-name: inputAnim;
+  animation-duration: 1s;
   font-size: 20px;
   font-weight: 750;
   margin: 0;
